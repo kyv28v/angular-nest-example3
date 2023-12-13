@@ -1,5 +1,5 @@
 import { Controller, Post, Request, Body } from '@nestjs/common';
-import { AuthToken } from '@angular-nest-example/api-interfaces';
+import { AuthToken } from '../../../../../libs/api-interfaces';
 import { AuthService } from '../services/auth.service';
 import { DatabaseService } from '../services/database.service';
 

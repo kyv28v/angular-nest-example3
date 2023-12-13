@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Query, Request, Res, Body, HttpStatus, HttpException } from '@nestjs/common';
 import { Response } from 'express';
-import { QueryResult } from '@angular-nest-example/api-interfaces';
+import { QueryResult } from '../../../../../libs/api-interfaces';
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 
