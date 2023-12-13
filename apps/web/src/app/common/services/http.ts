@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
 
@@ -13,12 +15,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     ) { }
 
   async get(url: string) {
-    const request = new HttpRequest('GET', url);
+    const request = new HttpRequest('GET', environment.apiUrl + url);
     return await this.callAPI(request);
   }
 
   async post(url: string, body: any) {
-    const request = new HttpRequest('POST', url, body);
+    const request = new HttpRequest('POST', environment.apiUrl + url, body);
     return await this.callAPI(request);
   }
 
@@ -61,7 +63,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       refreshHeaders = refreshHeaders.set('refresh-token', refreshToken);
 
       // リクエスト実行。成功なら、応答データをそのまま返す。
-      const refresh: any = await this.http.post('api/refreshToken', null, { headers: refreshHeaders }).toPromise();
+      const refresh: any = await this.http.post(environment.apiUrl + 'api/refreshToken', null, { headers: refreshHeaders }).toPromise();
       // console.log('refreshToken http response:' + JSON.stringify(refresh));
       if (refresh.message) {
         alert(refresh.message);

@@ -13,6 +13,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
+  app.enableCors();
 
   // 通信サイズの制限を拡張
   app.use(bodyParser.json({limit: '2mb'}));
