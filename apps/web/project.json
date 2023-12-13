@@ -17,7 +17,11 @@
         "tsConfig": "apps/web/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
-        "styles": ["apps/web/src/styles.scss"],
+        "styles": [
+          "node_modules/flatpickr/dist/flatpickr.min.css",
+          "node_modules/flatpickr/dist/themes/material_green.css",
+          "apps/web/src/assets/styles/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
