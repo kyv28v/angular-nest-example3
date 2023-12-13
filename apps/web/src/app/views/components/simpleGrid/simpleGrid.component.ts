@@ -99,7 +99,7 @@ export class SimpleGridComponent implements OnChanges {
       let saveFlag = true;
 
       // HTML要素から列幅を取得
-      let colWidth = [];
+      let colWidth:any[] = [];
       for (let i = 0; i < self.columnDefine.length; i++) {
         if (!document.getElementById('col_' + i)) saveFlag = false;
         colWidth.push(document.getElementById('col_' + i)?.offsetWidth);
