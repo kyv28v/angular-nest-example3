@@ -1,0 +1,157 @@
+{
+    "search": "検索",
+    "register": "登録",
+    "add": "追加",
+    "update": "更新",
+    "edit": "更新",
+    "delete": "削除",
+    "ok": "OK",
+    "cancel": "キャンセル",
+    "clear": "クリア",
+    "confirm": "確認",
+    "error": "エラー",
+    "note": "備考",
+    "leavePage": "このページを離れてもよろしいですか？\n行った変更が保存されない可能性があります。",
+    "refreshPage": "最新のデータを表示します。よろしいですか？\n行った変更が保存されない可能性があります。",
+    "requiredError": "入力必須です。",
+    "searching": "検索中...",
+    "registering": "登録中...",
+    "updating": "更新中...",
+    "deleting": "削除中...",
+    "downloading": "ダウンロード中...",
+    "downloadCsv": "CSV出力",
+    "clearGridSetting": "一覧の幅を初期化",
+    "login": {
+        "login": "ログイン",
+        "logout": "ログアウト",
+        "logoutConfirm": "ログアウトします。よろしいですか？",
+        "userId": "ユーザID",
+        "userCode": "ユーザID",
+        "password": "パスワード",
+        "enterUserId": "ユーザIDを入力してください",
+        "enterPassword": "パスワードを入力してください",
+        "adminLogin": "管理ユーザーでログイン",
+        "guestLogin": "ゲストユーザーでログイン",
+        "sessionExpired": "セッションの有効期限が切れました。\nもう一度ログインしてください。"
+    },
+    "topMenu": {
+        "profile": "プロフィール",
+        "language": "言語",
+        "japanese": "日本語",
+        "english": "英語",
+        "userManage": "ユーザ管理",
+        "changePassword": "パスワード変更",
+        "theme": "テーマ"
+    },
+    "home": {
+        "title": "ホーム",
+        "screen": "ホーム画面"
+    },
+    "user": {
+        "title": "ユーザ管理",
+        "id": "ID",
+        "code": "コード",
+        "name": "名前",
+        "age": "年齢",
+        "sex": "性別",
+        "sexDisp": "性別",
+        "birthday": "誕生日",
+        "birthdayDisp": "誕生日",
+        "password": "パスワード",
+        "note": "備考",
+        "auth": "権限",
+        "register": "ユーザ登録",
+        "registerConfirm": "ユーザを登録します。よろしいですか？",
+        "deleteUser": "ユーザ削除",
+        "deleteConfirm": "ユーザを削除します。よろしいですか？",
+        "changePassword": "パスワード変更",
+        "changePasswordConfirm": "パスワードを変更します。よろしいですか？",
+        "oldPassword": "以前のパスワード",
+        "newPassword": "新しいパスワード",
+        "newPassword2": "新しいパスワード(確認)",
+        "illegalNewPassword": "新しいパスワードが一致しません。",
+        "codeDuplicate": "コードがすでに使用されています。\n別のコードを指定してください。"
+    },
+    "system": {
+        "systemInfo": "システム情報",
+        "clientBuildDt": "クライアントビルド日時",
+        "serverBuildDt": "サーバービルド日時",
+        "gitLog": "変更履歴"
+    },
+    "page": {
+        "getException": "ページデータの取得に失敗しました。\n{{message}}",
+        "saveException": "ページデータの保存に失敗しました。\n{{message}}",
+        "saved": "保存しました"
+    },
+    "table": {
+        "delete": "削除",
+        "deleteConfirm": "データを削除します。よろしいですか？"
+    },
+    "roomAccessMng": {
+        "title": "入退室管理",
+        "id": "ID",
+        "room": "部屋",
+        "user": "ユーザ",
+        "entryDateTime": "入室日時",
+        "exitDateTime": "退室日時",
+        "accessTime": "滞在時間（H）",
+        "imageFile": "添付画像",
+        "register": "入退室日時登録",
+        "registerConfirmMessage": "入退室日時を登録します。よろしいですか？",
+        "deleteConfirmMessage": "入退室日時を削除します。よろしいですか？"
+    },
+    "filer": {
+        "name": "名前",
+        "lastModifiedDate": "更新日時",
+        "uploadedDate": "アップロード日時",
+        "size": "サイズ",
+        "type": "タイプ",
+        "id": "ID",
+        "upload": "アップロード",
+        "download": "ダウンロード",
+        "delete": "削除",
+        "deleteConfirm": "{{name}} を削除しますか？",
+        "deletedMessage": "{{name}} を削除しました",
+        "uploadedMessage": "{{name}} をアップロードしました",
+        "fileSaving": "ファイル保存中...",
+        "fileUploading": "ファイルアップロード中 {{percentDone}}%",
+        "filePreparingToDownload": "ダウンロード準備中...",
+        "fileDownloading": "ファイルダウンロード中 {{percentDone}}%"
+    },
+    "enums": {
+        "sex": {
+            "man": "男性",
+            "woman": "女性"
+        },
+        "rooms": {
+            "controllRoom": "制御室",
+            "testRoom": "試験室",
+            "experimentalRoom": "実験室",
+            "workRoom": "作業室",
+            "storageRoom": "保管室"
+        },
+        "week": {
+            "sunday": "日",
+            "monday": "月",
+            "tuesday": "火",
+            "wednesday": "水",
+            "thursday": "木",
+            "friday": "金",
+            "saturday": "土"
+        },
+        "auth": {
+            "user": {
+                "view": "ユーザ表示",
+                "add": "ユーザ追加",
+                "edit": "ユーザ更新",
+                "delete": "ユーザ削除"
+            },
+            "roomAccessMng": {
+                "view": "入退室管理：表示",
+                "add": "入退室管理：追加",
+                "edit": "入退室管理：更新",
+                "delete": "入退室管理：削除"
+            }
+        }
+    }
+}

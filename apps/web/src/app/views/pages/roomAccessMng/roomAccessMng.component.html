@@ -1,0 +1,37 @@
+<h4 class="title">{{ 'roomAccessMng.title' | translate }}</h4>
+<div class="form-group">
+  <div class="form-row">
+    <div class="space-between-area">
+      <app-search-condition
+        [searchConditionName]="'roomAccessMng'"
+        [items]="searchItems"
+        [method]="searchMethod"
+      ></app-search-condition>
+      <div>
+        <button mat-raised-button color="primary" (click)="regRoomAccessMng(null)" *ngIf="user.authCheck(21)">{{ 'roomAccessMng.register' | translate }}</button>
+        <button mat-icon-button [matMenuTriggerFor]="gridMenu">
+          <mat-icon>list_alt</mat-icon>
+        </button>
+        <mat-menu #gridMenu="matMenu">
+          <button mat-menu-item (click)="simpleGrid.downloadCSV()">
+            <mat-icon>download</mat-icon>
+            <span>{{ 'downloadCsv' | translate }}</span>
+          </button>
+          <button mat-menu-item (click)="simpleGrid.clearSetting()">
+            <mat-icon>clear</mat-icon>
+            <span>{{ 'clearGridSetting' | translate }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-area">
+  <app-simple-grid
+    [gridName]="'roomAccessMng'"
+    [columnDefine]="columnDefine"
+    [dataSource]="dataSource"
+  >
+  </app-simple-grid>
+</div>
