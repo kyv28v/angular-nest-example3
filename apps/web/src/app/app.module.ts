@@ -110,9 +110,5 @@ registerLocaleData(localeJa);
         HttpRequestInterceptor,
     ],
     bootstrap: [AppComponent],
-    entryComponents: [
-        SimpleDialogComponent,
-        TableDialogComponent,
-    ],
 })
 export class AppModule {}
