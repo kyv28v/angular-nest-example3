@@ -57,12 +57,12 @@ body {
 // flatpickr
 .flatpickr-input {
     float: left;
-    width: 200px;
+    width: 220px;
     margin-right: -40px;
     padding-right: 40px;
     box-sizing: border-box;
     input {
-        width: 200px !important;
+        width: 220px !important;
         background-color: white !important;
     }
 }
@@ -198,6 +198,11 @@ tree-viewport {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    // ↓ inputがtdの幅からはみ出てしまう問題の対応
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;     /* Firefox */
+    -webkit-box-sizing:border-box;  /* Chrome, Safari */
 }
 
 .form-control:focus {
