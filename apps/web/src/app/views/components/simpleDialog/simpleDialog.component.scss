@@ -38,7 +38,7 @@ table {
 }
 
 .form-wide {
-    width: 100%;
+    width: calc(100% - 20px);
 }
 
 label {

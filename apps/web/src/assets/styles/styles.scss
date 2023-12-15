@@ -98,7 +98,7 @@ tree-viewport {
     display: flex!important;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 1rem 1rem !important;
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: calc(.3rem - 1px);
     border-top-right-radius: calc(.3rem - 1px);
@@ -318,4 +318,9 @@ button.close {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
+}
+
+// mdc補正
+.mdc-dialog__title::before {
+    display: none !important;
 }
