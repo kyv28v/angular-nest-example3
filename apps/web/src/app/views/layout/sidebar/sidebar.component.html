@@ -1,13 +1,19 @@
 <div id="sidebar" [ngClass]="shared.theme + '-color'">
     <mat-nav-list>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/home']" (click)="selectMenu()">
-            <mat-icon class="sidenav-icon">home</mat-icon> {{ 'home.title' | translate }}
+            <div class="left-alignment-area">
+                <mat-icon class="sidenav-icon">home</mat-icon> <div>{{ 'home.title' | translate }}</div>
+            </div>
         </a>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/userMng']" (click)="selectMenu()" *ngIf="user.authCheck(10)">
-            <mat-icon class="sidenav-icon">people</mat-icon> {{ 'user.title' | translate }}
+            <div class="left-alignment-area">
+                <mat-icon class="sidenav-icon">people</mat-icon> {{ 'user.title' | translate }}
+            </div>
         </a>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/roomAccessMng']" (click)="selectMenu()" *ngIf="user.authCheck(20)">
-            <mat-icon class="sidenav-icon">access_time</mat-icon> {{ 'roomAccessMng.title' | translate }}
+            <div class="left-alignment-area">
+                <mat-icon class="sidenav-icon">access_time</mat-icon> {{ 'roomAccessMng.title' | translate }}
+            </div>
         </a>
     </mat-nav-list>
 </div>

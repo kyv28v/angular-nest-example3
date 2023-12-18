@@ -46,3 +46,13 @@
         left: -250px;
     }
 }
+
+.left-alignment-area {
+    display: flex;
+    justify-content: flex-start;
+  
+    mat-icon {
+        margin-right: 15px;
+    }
+}
+  
