@@ -7,8 +7,13 @@
   width: 100%;
   padding: 3px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
+  div {
+    display: flex;
+    align-items: center;
+  }
   button {
     margin: 3px;
   }
