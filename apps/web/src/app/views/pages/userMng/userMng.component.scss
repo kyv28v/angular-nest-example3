@@ -1,6 +1,9 @@
 .title {
   border-bottom: solid 1px grey;
   color: black;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  font-size: calc(1.275rem + .3vw);
 }
 
 .space-between-area {
@@ -20,6 +23,6 @@
 }
 
 .grid-area {
-  height: calc(100% - 100px);
+  height: calc(100% - 120px);
   overflow-y: scroll;
 }

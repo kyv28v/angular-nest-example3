@@ -1,5 +1,6 @@
 mat-table {
-  width: 100%;
+  width: calc(100% - 1px);
+  min-width: calc(100% - 1px);
   vertical-align: middle;
   display: table;
   border-top: 1px solid gray !important;
