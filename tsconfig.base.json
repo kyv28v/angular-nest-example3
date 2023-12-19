@@ -13,6 +13,7 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,    // 初期化を必須にしない
     "baseUrl": ".",
     "paths": {}
   },
