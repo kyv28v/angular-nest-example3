@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone, HostBinding } from '@angular/core';
+import { Component, OnInit, NgZone, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { ResizedEvent } from 'angular-resize-event';
+// import { ResizedEvent } from 'angular-resize-event';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -23,6 +23,7 @@ export class LayoutComponent implements OnInit {
     constructor(
         private ngZone: NgZone,
         public overlayContainer: OverlayContainer,
+        public cdRef: ChangeDetectorRef,
         private translate: TranslateService,
         private shared: SharedService,
     ) {
@@ -51,6 +52,13 @@ export class LayoutComponent implements OnInit {
         // set theme
         this.onThemeChange(this.shared.theme);
 
+        // resize sidebar width
+        const observer = new ResizeObserver( entries => {
+            this.onResized(entries[0].contentRect.width);      // Resize処理の呼び出し（entriesは配列だが、現状は1つだけのはず。）
+            this.cdRef.detectChanges();     // 右側のメイン領域がもとのサイズのままになってしまうので、これで強制的に更新する。
+        });
+        observer.observe(document.getElementById('sidebarArea') as Element);
+
         console.log('layout.ngOnInit end.')
     }
 
@@ -65,8 +73,9 @@ export class LayoutComponent implements OnInit {
     }
 
     // resize sidebar width
-    onResized(event: ResizedEvent) {
-        const sidebarWidth = (event.newRect.width + 1).toString() + 'px';       // 1pxずれてしまうのでここで補正する
+    // onResized(event: ResizedEvent) {
+    onResized(width: number) {
+        const sidebarWidth = (width + 1).toString() + 'px';       // 1pxずれてしまうのでここで補正する
         localStorage.setItem('sidebar.width', sidebarWidth);
         console.log("set sidebar width:" + sidebarWidth);
     }

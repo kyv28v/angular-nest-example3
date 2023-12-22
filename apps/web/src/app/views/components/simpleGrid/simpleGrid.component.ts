@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnChanges, ViewChild, Input } from '@
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 
-import { ResizedEvent } from 'angular-resize-event';
+// import { ResizedEvent } from 'angular-resize-event';
 import { TranslateService } from '@ngx-translate/core';
 
 import { SimpleDialogComponent, InputType } from '../../components/simpleDialog/simpleDialog.component';
@@ -73,6 +73,15 @@ export class SimpleGridComponent implements OnChanges {
           self.gridSort.direction = tableSort.direction;
           self.dataSource.sort = self.gridSort;
         }
+
+        // 列のResizeを監視
+        const observer = new ResizeObserver( entries => {
+          self.onResized(entries[0]);
+        });
+          
+        for (let i = 0; i < self.columnDefine.length; i++) {
+          observer.observe(document.getElementById('col_' + i) as Element);
+        }
       });
     }
   }
@@ -80,7 +89,7 @@ export class SimpleGridComponent implements OnChanges {
   // テーブルの列幅を変更したとき、幅をローカルストレージに保存する。
   // ※ 何度も実行されてしまわないよう、500msの間イベントが来ていなかったら実行する。
   lastEvent: any = null;
-  onResized(event: ResizedEvent) {
+  onResized(event: any) {
     // 最後のイベントを保持
     var lastEvent = {
       time: new Date(),

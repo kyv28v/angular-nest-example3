@@ -3,12 +3,11 @@
     (onThemeChangeEvent)="onThemeChange($event.toString())"
 ></app-topnav>
 <mat-sidenav-container autosize>
-    <mat-sidenav #sidenav
+    <mat-sidenav #sidenav id="sidebarArea"
         mode="side"
         opened="{{ sidenavOpened }}"
         class="sidebar"
         [style.width]="sidebarWidth"
-        (resized)="onResized($event)"
     >
         <app-sidebar (toggleSidebar)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>

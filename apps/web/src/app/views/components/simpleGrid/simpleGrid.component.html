@@ -3,7 +3,7 @@
 
     <div *ngFor="let list of columnDefine; let i = index">
       <ng-container [matColumnDef]="list.column" [ngSwitch]="list.type">
-        <th mat-header-cell *matHeaderCellDef (resized)="onResized($event)" id="{{'col_' + i}}">
+        <th mat-header-cell *matHeaderCellDef id="{{'col_' + i}}">
           <span mat-sort-header>{{ list.name | translate }}</span>
         </th>
         <!-- 文字列 -->

@@ -28,7 +28,6 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "@nrwl/angular": "^17.2.3",
     "@types/crypto-js": "^4.2.1",
-    "angular-resize-event": "^3.2.0",
     "angularx-flatpickr": "^7.3.0",
     "axios": "^1.0.0",
     "crypto-js": "^4.2.0",
