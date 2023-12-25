@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { lastValueFrom } from 'rxjs';
 
 import flatpickr from 'flatpickr';
 import { english } from 'flatpickr/dist/l10n/default';
@@ -143,7 +144,7 @@ export class SimpleDialogComponent {
 
   // wait
   public async wait() {
-    return await this.dialogRef.afterClosed().toPromise();
+    return await lastValueFrom(this.dialogRef.afterClosed());
   }
 
   // 入力チェック
