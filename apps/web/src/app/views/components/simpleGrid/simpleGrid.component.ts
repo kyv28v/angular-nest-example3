@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnChanges, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, OnChanges, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 
@@ -26,7 +26,7 @@ export interface ColumnDefine {
   templateUrl: './simpleGrid.component.html',
   styleUrls: ['./simpleGrid.component.scss'],
 })
-export class SimpleGridComponent implements OnChanges {
+export class SimpleGridComponent implements OnChanges, OnDestroy {
   @Input() gridName: string;
   @Input() columnDefine: any[] = [];
   @Input() dataSource: MatTableDataSource<any>;
@@ -34,6 +34,7 @@ export class SimpleGridComponent implements OnChanges {
   dispCol: string[];
   @ViewChild("GridSort", { static: true }) gridSort: MatSort;
 
+  resizeObserver: ResizeObserver;
 
   // constructor
   constructor(
@@ -75,15 +76,19 @@ export class SimpleGridComponent implements OnChanges {
         }
 
         // 列のResizeを監視
-        const observer = new ResizeObserver( entries => {
+        self.resizeObserver = new ResizeObserver( entries => {
           self.onResized(entries[0]);
         });
           
         for (let i = 0; i < self.columnDefine.length; i++) {
-          observer.observe(document.getElementById('col_' + i) as Element);
+          self.resizeObserver.observe(document.getElementById('col_' + i) as Element);
         }
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.resizeObserver.disconnect();
   }
 
   // テーブルの列幅を変更したとき、幅をローカルストレージに保存する。

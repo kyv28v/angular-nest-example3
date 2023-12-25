@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, HostBinding, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 // import { ResizedEvent } from 'angular-resize-event';
 
@@ -14,11 +14,12 @@ import '../../common/extensions/string.extensions';
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
     public sidenavOpened = true;
     @HostBinding('class') componentCssClass: any;
 
     sidebarWidth = '265px';
+    resizeObserver: ResizeObserver;
 
     constructor(
         private ngZone: NgZone,
@@ -53,15 +54,19 @@ export class LayoutComponent implements OnInit {
         this.onThemeChange(this.shared.theme);
 
         // resize sidebar width
-        const observer = new ResizeObserver( entries => {
+        this.resizeObserver = new ResizeObserver( entries => {
             if (entries[0].contentRect.width > 0) {                 // widthが0の時は何もしない。（ログイン画面へ戻るときなど）
                 this.onResized(entries[0].contentRect.width);       // Resize処理の呼び出し（entriesは配列だが、現状は1つだけのはず。）
                 this.cdRef.detectChanges();                         // 右側のメイン領域がもとのサイズのままになってしまうので、これで強制的に更新する。
             }
         });
-        observer.observe(document.getElementById('sidebarArea') as Element);
+        this.resizeObserver.observe(document.getElementById('sidebarArea') as Element);
 
         console.log('layout.ngOnInit end.')
+    }
+
+    ngOnDestroy() {
+        this.resizeObserver.disconnect();
     }
 
     // ウインドウサイズの調整
