@@ -4,12 +4,16 @@ import { QueryResult } from '../../../../../libs/api-interfaces';
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 
+import '../../../../common/extensions/object.extensions';
+
 const jwt = require('jsonwebtoken');
 
 const fs = require('fs')
 
 @Controller()
 export class QueryController {
+  LOG_LENGTH = 500;
+
   constructor(
     // private readonly db: DatabaseService,
     private readonly auth: AuthService,
@@ -23,9 +27,9 @@ export class QueryController {
     @Query() query: any,
   ) {
     try {
-      console.log('getQuery(' + JSON.stringify(query) + ')');
-      console.log(' sql:' + query.sql);
-      console.log(' values:' + query.values);
+      console.log('getQuery(' + JSON.stringify(query).toOmitString(this.LOG_LENGTH) + ')');
+      // console.log(' sql:' + query.sql);
+      // console.log(' values:' + query.values);
 
       // トークンの正常チェック
       const verifyToken = await this.auth.verifyToken(req.headers['access-token']);
@@ -43,7 +47,7 @@ export class QueryController {
       const data = await this.query(sql, values, false);
 
       console.log('getQuery() end');
-      console.log(' data:' + JSON.stringify(data.rows));
+      console.log(' data:' + JSON.stringify(data.rows).toOmitString(this.LOG_LENGTH));
       res.json({rows: data.rows, message: null});
       return;
     } catch (e) {
@@ -60,9 +64,9 @@ export class QueryController {
     @Body() body: any,
   ) {
     try {
-      console.log('postQuery(' + JSON.stringify(body) + ')');
-      console.log(' sql:' + body.sql);
-      console.log(' values:' + body.values);
+      console.log('postQuery(' + JSON.stringify(body).toOmitString(this.LOG_LENGTH) + ')');
+      // console.log(' sql:' + body.sql);
+      // console.log(' values:' + body.values);
 
       // トークンの正常チェック
       const verifyToken = await this.auth.verifyToken(req.headers['access-token']);
@@ -79,7 +83,7 @@ export class QueryController {
       const data = await this.query(sql, body.values, true);
 
       console.log('postQuery() end');
-      console.log(' data:' + JSON.stringify(data.rows));
+      console.log(' data:' + JSON.stringify(data.rows).toOmitString(this.LOG_LENGTH));
       res.json({rows: data.rows, message: null});
       return;
     } catch (e) {
