@@ -54,8 +54,10 @@ export class LayoutComponent implements OnInit {
 
         // resize sidebar width
         const observer = new ResizeObserver( entries => {
-            this.onResized(entries[0].contentRect.width);      // Resize処理の呼び出し（entriesは配列だが、現状は1つだけのはず。）
-            this.cdRef.detectChanges();     // 右側のメイン領域がもとのサイズのままになってしまうので、これで強制的に更新する。
+            if (entries[0].contentRect.width > 0) {                 // widthが0の時は何もしない。（ログイン画面へ戻るときなど）
+                this.onResized(entries[0].contentRect.width);       // Resize処理の呼び出し（entriesは配列だが、現状は1つだけのはず。）
+                this.cdRef.detectChanges();                         // 右側のメイン領域がもとのサイズのままになってしまうので、これで強制的に更新する。
+            }
         });
         observer.observe(document.getElementById('sidebarArea') as Element);
 
